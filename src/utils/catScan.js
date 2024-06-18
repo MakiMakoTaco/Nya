@@ -239,7 +239,7 @@ async function processChannelsInChunks(
 	guildId,
 	guildPreferences,
 	client,
-	chunkSize = 30,
+	chunkSize = 20,
 ) {
 	await interaction.editReply({
 		content: `Fetching messages, this could take a while. Please wait...`,
