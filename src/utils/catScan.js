@@ -298,6 +298,8 @@ async function processChannel(channel, guildId, client) {
 
 	while (keepFetching) {
 		try {
+			await new Promise((resolve) => setTimeout(resolve, 200)); // 0.5 second delay
+
 			const fetchedMessages = await channel.messages.fetch({
 				limit,
 				before: lastMessageId,
