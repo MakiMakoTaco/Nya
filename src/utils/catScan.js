@@ -194,7 +194,7 @@ async function updateReply(
 				embeds: [completedScanEmbed],
 			});
 
-			await interaction.followUp(
+			await message.reply(
 				`Finished scanning ${totalMessages} between ${allChannels.length} channels for cat stats.`,
 			);
 
