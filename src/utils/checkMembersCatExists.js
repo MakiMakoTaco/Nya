@@ -1,4 +1,4 @@
-const Cat = require('../../models/Cat');
+const Cat = require('../models/Cat');
 
 let uniqueMembers = new Set();
 

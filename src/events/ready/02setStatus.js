@@ -2,7 +2,7 @@ const { ActivityType } = require('discord.js');
 const {
 	checkMembersCatExists,
 	uniqueMembers,
-} = require('./02checkMembersCatExists');
+} = require('../../utils/checkMembersCatExists');
 
 module.exports = async (client) => {
 	await checkMembersCatExists(client);
