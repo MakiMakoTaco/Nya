@@ -239,7 +239,7 @@ async function processChannelsInChunks(
 	guildId,
 	guildPreferences,
 	client,
-	chunkSize = 15,
+	chunkSize = 10,
 ) {
 	await interaction.editReply({
 		content: `Fetching messages, this could take a while. Please wait...`,
@@ -288,7 +288,7 @@ async function processChannel(channel, guildId, client) {
 	let keepFetching = true;
 
 	let limit = 100;
-	let batch = 3000;
+	let batch = 1500;
 
 	let batchNumber = 0;
 
@@ -298,7 +298,7 @@ async function processChannel(channel, guildId, client) {
 
 	while (keepFetching) {
 		try {
-			await new Promise((resolve) => setTimeout(resolve, 1000)); // 0.5 second delay
+			// await new Promise((resolve) => setTimeout(resolve, 1000)); // 0.5 second delay
 
 			const fetchedMessages = await channel.messages.fetch({
 				limit,
