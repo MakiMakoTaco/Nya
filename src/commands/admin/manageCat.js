@@ -224,8 +224,13 @@ module.exports = {
 
 								if (response?.customId === 'confirm') {
 									// Scan server
+									const botMember = interaction.guild.members.cache.get(
+										client.user.id,
+									);
 									const textChannels = interaction.guild.channels.cache.filter(
-										(channel) => channel.isTextBased(),
+										(channel) =>
+											channel.isTextBased() &&
+											channel.permissionsFor(botMember).has('VIEW_CHANNEL'),
 									);
 
 									guildPreferences.cat.scanning = true;
@@ -364,8 +369,13 @@ module.exports = {
 
 					if (response?.customId === 'confirm') {
 						// Scan server
+						const botMember = interaction.guild.members.cache.get(
+							client.user.id,
+						);
 						const textChannels = interaction.guild.channels.cache.filter(
-							(channel) => channel.isTextBased(),
+							(channel) =>
+								channel.isTextBased() &&
+								channel.permissionsFor(botMember).has('VIEW_CHANNEL'),
 						);
 
 						guildPreferences.cat.scanning = true;
