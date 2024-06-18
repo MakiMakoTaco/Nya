@@ -1,6 +1,6 @@
 const Cat = require('../models/Cat');
 const statsArray = require('../objects/catStatsArray');
-const { EmbedBuilder, PermissionFlagsBits } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 // const { eventEmitter } = require('../mrrp');
 
 let channelUpdates = {};
@@ -68,25 +68,6 @@ async function updateStatsForUser(
 	);
 }
 
-// const updateStatsForUser = async (guildId, userId, stats) => {
-// 	// Retrieve user's existing stats from the database
-// 	const existingUserStats = await Cat.findOne({ guildId, userId });
-
-// 	if (existingUserStats) {
-// 		// Add the stats to the existing model
-// 		for (const [key, value] of Object.entries(stats)) {
-// 			existingUserStats.stats[key] =
-// 				(existingUserStats.stats[key] || 0) + value;
-// 		}
-// 		// Save the updated stats
-// 		await existingUserStats.save();
-// 	} else {
-// 		// If no existing model, create a new one
-// 		const newUserStats = new Cat({ guildId, userId, stats });
-// 		await newUserStats.save();
-// 	}
-// };
-
 // Function to process and save messages to the database
 const processAndSaveMessagesToDB = async (messages, guildId, client) => {
 	const guild = client.guilds.cache.get(guildId); // Assuming 'client' is your Discord client
@@ -115,19 +96,6 @@ const processAndSaveMessagesToDB = async (messages, guildId, client) => {
 		}
 	}
 };
-
-// const processAndSaveMessagesToDB = async (messages, guildId) => {
-// 	for (const [id, msg] of messages) {
-// 		if (!msg.author.bot) {
-// 			try {
-// 				const stats = extractStatsFromMessage(msg);
-// 				await updateStatsForUser(guildId, msg.author.id, stats);
-// 			} catch (error) {
-// 				console.error(`Error:`, error);
-// 			}
-// 		}
-// 	}
-// };
 
 async function updateReply(
 	interaction,
@@ -288,7 +256,7 @@ async function processChannel(channel, guildId, client) {
 	let keepFetching = true;
 
 	let limit = 100;
-	let batch = 1500;
+	let batch = 1000;
 
 	let batchNumber = 0;
 
@@ -298,8 +266,6 @@ async function processChannel(channel, guildId, client) {
 
 	while (keepFetching) {
 		try {
-			// await new Promise((resolve) => setTimeout(resolve, 1000)); // 0.5 second delay
-
 			const fetchedMessages = await channel.messages.fetch({
 				limit,
 				before: lastMessageId,
