@@ -230,7 +230,9 @@ module.exports = {
 									const textChannels = interaction.guild.channels.cache.filter(
 										(channel) =>
 											channel.isTextBased() &&
-											channel.permissionsFor(botMember).has('VIEW_CHANNEL'),
+											channel
+												.permissionsFor(botMember)
+												.has(PermissionFlagsBits.ViewChannel),
 									);
 
 									guildPreferences.cat.scanning = true;
@@ -375,7 +377,9 @@ module.exports = {
 						const textChannels = interaction.guild.channels.cache.filter(
 							(channel) =>
 								channel.isTextBased() &&
-								channel.permissionsFor(botMember).has('VIEW_CHANNEL'),
+								channel
+									.permissionsFor(botMember)
+									.has(PermissionFlagsBits.ViewChannel),
 						);
 
 						guildPreferences.cat.scanning = true;
