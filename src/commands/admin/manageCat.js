@@ -208,7 +208,7 @@ module.exports = {
 						} else {
 							const reply = await interaction.editReply({
 								content:
-									'Are you sure you want to scan all messages in this server? This could take up to a couple of hours depending on server size and **will instantly delete all existing stats which cannot be retrieved and is currently unable to be stopped once started**.',
+									'Are you sure you want to scan all messages in this server? This could take a couple hours or longer, depending on server size and **will instantly delete all existing stats which cannot be retrieved and is currently unable to be stopped once started**.',
 								components: [row],
 							});
 
@@ -285,7 +285,7 @@ module.exports = {
 					if (reset) {
 						const reply = await interaction.editReply({
 							content:
-								'Are you sure you want to reset stats for all users? **You cannot undo this action**\n\nIf you wish to just delete for specific users, please use the `/manage-cat config reset` command.',
+								'Are you sure you want to reset stats for all users? **You cannot undo this action**\n\nIf you wish to just delete for specific users, please use the `/manage-cat config reset` command (coming soon:tm:).',
 							components: [row],
 						});
 
@@ -355,7 +355,7 @@ module.exports = {
 				// if (subcommand === 'start') {
 				const reply = await interaction.editReply({
 					content:
-						'Are you sure you want to scan all messages in this server? This could take up to a couple of hours depending on server size and **will instantly delete all existing stats which cannot be retrieved and is currently unable to be stopped once started**.',
+						'Are you sure you want to scan all messages in this server? This could take a couple hours or longer, depending on server size and **will instantly delete all existing stats which cannot be retrieved and is currently unable to be stopped once started**.',
 					components: [row],
 				});
 

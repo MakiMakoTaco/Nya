@@ -197,6 +197,13 @@ async function updateReply(
 			await interaction.followUp(
 				`Finished scanning ${totalMessages} between ${allChannels.length} channels for cat stats.`,
 			);
+
+			channelUpdates = {};
+			oldChannelUpdates = {};
+
+			completedChannels = 0;
+			ongoingChannels = 0;
+			totalMessages = 0;
 		}
 	}, 1000);
 }

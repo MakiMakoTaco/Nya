@@ -1,7 +1,7 @@
 const Preferences = require('../../models/Preferences');
 
 module.exports = async (guild) => {
-	const existingPreferences = Preferences.findOne({ guildId: guild.id });
+	const existingPreferences = await Preferences.findOne({ guildId: guild.id });
 
 	if (!existingPreferences) {
 		try {
