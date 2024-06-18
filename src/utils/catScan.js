@@ -321,7 +321,7 @@ async function processChannel(channel, guildId, client) {
 			if (channelUpdates[channel.name] === undefined) {
 				let hidden = false;
 
-				if (channel.permissionOverwrites.cache.size > 0) {
+				if (channel.permissionOverwrites.cache?.size > 0) {
 					const everyoneOverwrite = channel.permissionOverwrites.cache.get(
 						channel.guild.roles.everyone.id,
 					);
