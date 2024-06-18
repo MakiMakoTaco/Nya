@@ -288,7 +288,7 @@ async function processChannel(channel, guildId, client) {
 	let keepFetching = true;
 
 	let limit = 100;
-	let batch = 5000;
+	let batch = 3000;
 
 	let batchNumber = 0;
 
