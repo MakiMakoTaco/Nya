@@ -162,7 +162,7 @@ async function updateReply(
 							.slice(0, amountToShow)
 							.map(([channelName, updates]) => {
 								return {
-									name: `${updates.hidden ? 'hidden-channel' : channelName}: ${
+									name: `${channelName}: ${
 										updates.processingBatch
 											? `Processing ${
 													updates.messagesThisBatch
@@ -319,23 +319,7 @@ async function processChannel(channel, guildId, client) {
 			}
 
 			if (channelUpdates[channel.name] === undefined) {
-				let hidden = false;
-
-				if (
-					channel &&
-					channel.permissionOverwrites &&
-					channel.permissionOverwrites.cache?.size > 0
-				) {
-					const everyoneOverwrite = channel.permissionOverwrites.cache.get(
-						channel.guild.roles.everyone.id,
-					);
-					hidden = everyoneOverwrite
-						? everyoneOverwrite.deny.has(PermissionFlagsBits.ViewChannel)
-						: false;
-				}
-
 				channelUpdates[channel.name] = {
-					hidden,
 					batchNumber,
 					scannedMessages: batch * batchNumber + messages.length,
 					messagesThisBatch: messages.length,
